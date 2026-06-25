@@ -1,0 +1,50 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # 🎯 إجبار كتابة الأنواع (عشان الـ Data Types متتمسحش)
+    always_declare_return_types: true    # يجبرك تكتب نوع الـ return
+    type_annotate_public_apis: true      # يجبرك تكتب الأنواع في أي public method أو متغير
+    avoid_types_on_closure_parameters: false # تعطيل القاعدة اللي بتقولك شيل النوع من البارامتر
+
+    # ✅ أساسيات الأداء والجودة (Clean Architecture)
+    avoid_print: true                    # يمنع print واستبدالها بـ Logger
+    prefer_single_quotes: true           # توحيد شكل النصوص
+    prefer_const_constructors: true      # تحسين الأداء في الـ Widgets
+    prefer_const_literals_to_create_immutables: true # ثبات الـ Collections
+    annotate_overrides: true             # توثيق الـ Overrides
+
+    # ⏳ التعامل مع الـ Async (مهم جداً للـ Cubits)
+    unawaited_futures: true              # تنبيه لو نسيت await
+    avoid_void_async: true               # منع async مع void
+    cancel_subscriptions: true           # منع الـ Memory Leaks
+    close_sinks: true                    # غلق الـ StreamControllers
+
+    # 🛠 تنظيم الكود (Style)
+    sort_child_properties_last: true     # تنظيم شكل الـ Widget Tree
+    require_trailing_commas: true        # تسهيل قراءة الـ Diff وتنسيق الـ VS Code
+    prefer_final_fields: true            # حماية المتغيرات جوه الكلاس
+    prefer_final_locals: true            # حماية المتغيرات المحلية
+
+    # 🚫 منع الأخطاء الشائعة
+    avoid_relative_lib_imports: true     # إجبار استخدام الـ Package imports
+    avoid_unnecessary_containers: true   # منع تعقيد الـ UI بدون داعي
+    avoid_init_to_null: true             # منع الكود الزيادة
+    avoid_dynamic_calls: true            # أمان أكتر ضد الـ Runtime errors
+    use_key_in_widget_constructors: true # أساسي للـ Flutter framework
+
+    # 📏 قواعد شلناها (عشان الـ Boilerplate ميزيدش)
+    lines_longer_than_80_chars: false    # مش محتاجين نلتزم بـ 80 حرف بالظبط
+    sort_constructors_first: false       # رتب الكود براحتك حسب المنطق بتاعك
+
+analyzer:
+  errors:
+    # خلى التحذيرات دي Errors عشان متمشيش الكود غير وهو نظيف
+    todo: ignore
+    unused_local_variable: error
+    unused_import: error
+  exclude:
+    - "**/*.g.dart"                     # استثناء الملفات المولدة
+    - "**/*.freezed.dart"                # استثناء ملفات Freezed
+    - "**/*.generated.dart"              #
+    - "**/*.mocks.dart"                  #
